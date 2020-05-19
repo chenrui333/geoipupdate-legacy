@@ -14,5 +14,6 @@ jobs:
           sudo apt-get install -y --no-install-recommends libcurl4-openssl-dev
       - name: Setup geoipupdate bin
         run: |
-          sudo curl -s -Lo /usr/local/bin/geoipupdate https://github.com/chenrui333/geoipupdate-legacy/releases/download/v3.1.2/geoipupdate
+          curl -s -Lo geoipupdate https://github.com/chenrui333/geoipupdate-legacy/releases/download/v3.1.2/geoipupdate
+          sudo ln -s geoipupdate /usr/local/bin/geoipupdate # symlink the bin
           geoipupdate -V # check the version
