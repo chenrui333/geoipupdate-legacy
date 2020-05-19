@@ -15,5 +15,5 @@ jobs:
       - name: Setup geoipupdate bin
         run: |
           curl -s -Lo geoipupdate https://github.com/chenrui333/geoipupdate-legacy/releases/download/v3.1.2/geoipupdate
-          sudo ln -s geoipupdate /usr/local/bin/geoipupdate # symlink the bin
+          chmod +x geoipupdate && sudo geoipupdate /usr/local/bin/geoipupdate
           geoipupdate -V # check the version
