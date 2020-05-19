@@ -24,4 +24,4 @@ jobs:
           ./configure --prefix=${GITHUB_WORKSPACE}/bin
           make
           make install
-          ls -1
+          ls -1 bin/
