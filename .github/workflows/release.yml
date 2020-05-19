@@ -18,7 +18,7 @@ jobs:
       - name: Build project # This would actually build your project, using zip for an example artifact
         run: |
           ./bootstrap
-          ./configure --prefix=./bin
+          ./configure --prefix=${GITHUB_WORKSPACE}/bin
           make
           make install
           ls -1
