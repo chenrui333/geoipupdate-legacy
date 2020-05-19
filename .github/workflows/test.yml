@@ -1,0 +1,18 @@
+name: test setup
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install libcurl4-openssl-dev
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libcurl4-openssl-dev
+      - name: Setup geoipupdate bin
+        run: |
+          sudo curl -s -Lo /usr/local/bin/geoipupdate https://github.com/chenrui333/geoipupdate-legacy/releases/download/v3.1.2/geoipupdate
+          geoipupdate -V # check the version
