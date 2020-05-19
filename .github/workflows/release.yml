@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Install dependencies
+      - name: Install libcurl4-openssl-dev
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends libcurl4-openssl-dev
@@ -25,3 +25,4 @@ jobs:
           make
           make install
           ls -1 bin/
+          bin/geoipupdate -v
