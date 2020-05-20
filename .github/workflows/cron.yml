@@ -1,0 +1,23 @@
+name: daily build
+
+on:
+  schedule:
+    # runs every day 12pm UTC
+    - cron:  '0 12 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install libcurl4-openssl-dev
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libcurl4-openssl-dev
+      - name: Build project
+        run: |
+          ./bootstrap
+          ./configure --prefix=${GITHUB_WORKSPACE}/bin
+          make
+          make install
